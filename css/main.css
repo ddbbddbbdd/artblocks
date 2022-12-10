@@ -1,0 +1,357 @@
+:root{
+    --white-color: #fff;
+    --body-bg-color: #000;
+    --section-bg-color: #202834;
+    --box-background-dark: rgba(165, 165, 165, 0.07);
+    --box-background-light: rgb(165, 165, 165, .1);
+    --box-shadow-dark: 0px 0px 50px rgb(0, 0, 0, 1);
+    --box-shadow-white: 4px 4px 5px rgb(256 256 256, .15);
+    --index: calc(1vw + 1vh);
+  }
+  
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+  /* Скрываем Scrollbar */
+body {
+	background: var(--body-bg-color);
+	scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar { 
+	display: none; /* Safari and Chrome */
+}
+
+.container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+}
+
+p {
+    color: rgb(255, 255, 255);
+	font-size: calc(.9*var(--index));
+    font-weight: 300;
+    line-height: 180%;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+}
+
+.main-layer {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100px;
+    background-image: linear-gradient(90deg, #000 45%, rgba(23, 23, 23, 0.85) 55%)
+}
+
+
+.main-layer .content {
+    width: 70vw;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.main-layer .content .about {
+    margin-top: 15vh;
+    width: 55vw;
+    height: 80vh;
+    position: relative;
+}
+
+.about .title {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-100px);
+    transition-property: transform, opacity;
+}
+.about.show .title{
+    opacity: 1;
+    transform: translateY(0);
+    transition: .6s ease;
+    transition-delay: .15s;
+    transform: translateY(0);
+}
+
+.title h1 {
+    color: rgb(255, 255, 255);
+	font-size: calc(4*var(--index));
+    font-weight: 600;
+    letter-spacing: calc(0.15*var(--index));
+}
+.title h1 span {
+    font-size: calc(2.2*var(--index));
+    font-weight: 300;
+}
+
+.about .text-content .text {
+    margin-top: calc(2.5 * var(--index));
+    min-width: 300px;
+    min-height: 30vh;
+    padding: calc(2.5 * var(--index));
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    background-color: var(--box-background-light);
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px); 
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    opacity: 0;
+    transition-property: transform, opacity;
+}
+.about.show .text-content .text {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    transition: 1s ease .3s;
+    transition-property: transform, opacity;
+}
+
+.portfolio {
+    margin-top: calc(7 * var(--index));
+    width: 80%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(200px);
+    transition-property: transform, opacity;
+}
+.portfolio.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: .7s ease;
+}
+
+.block-title {
+    width: 55vw;
+    min-width: 280px;
+    height: calc(9 * var(--index) + 89%);
+    position: absolute;
+    background-color: var(--box-background-dark);
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.15);
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(-9 * var(--index)));
+}
+.block-title .title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(9 * var(--index));
+    opacity: 0;
+    transform: translateY(50px);
+    transition: .7s ease .15s;
+}
+.block-title .title h1{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.portfolio.show .block-title .title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.info {
+    margin-top: calc(9 * var(--index));
+    max-width: 68vw;
+    width: calc(50 * var(--index));
+    position: relative;
+    display: flex;
+}
+.portfolio-container {
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+.portfolio-container .media {
+    position: relative;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio .media.media-right {
+    align-items: flex-end;
+}
+.portfolio .media.media-left {
+    align-items: flex-start;
+}
+.portfolio .media.media-right .frame-media.first-frame {
+    margin-top: 20%;
+}
+
+.frame-media {
+    opacity: 0;
+	position: relative;
+	width: calc(24 * var(--index));
+	height: calc(16 * var(--index));
+	background-position: center;
+	background-size: cover;
+	transform-style: preserve-3d;
+	border-radius: 20px;
+    box-shadow: var(--box-shadow-dark);
+    transition: all 1.15s ease .15s;
+    transition-property: transform, opacity;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    z-index: 999;
+    margin-top: 5%;
+    margin-bottom: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+.media.media-right .frame-media {
+    transition-delay: .25s;
+    transform: translateY(150px) scale(.8, .8);
+}
+.media.media-left .frame-media {
+    transition-duration: 1.15s;
+    transform: translateX(-100px) scale(.8, .8);  
+}
+
+.media .frame-media.show {
+    opacity: 1;
+    transform: scale(1, 1);
+    cursor: pointer;
+}
+
+.media.media-right .frame-media.show:hover {
+    transform: translateX(calc(2 * var(--index))) scale(1.1, 1.1);
+    transition-delay: .15s;
+}
+
+.media.media-left .frame-media.show:hover {
+    transform: translateX(calc(-2 * var(--index))) scale(1.1, 1.1);
+    transition-delay: .15s;
+}
+
+.frame-media video {
+    position: relative;
+    height: 100%;
+}
+
+.project-content {
+    min-width: 60vw;
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+}
+
+
+.project {
+    margin-top: calc(3 * var(--index));
+    width: 80%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(200px);
+    transition-property: transform, opacity;
+}
+.project.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: .7s ease;
+    transition-property: transform, opacity;
+}
+.project.show .block-title .title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project .info {
+    flex-direction: column;
+    align-items: center;
+}
+
+.project .info .project-container {
+    margin-top: calc(1 * var(--index));
+    position: relative;
+    width: 100%;
+    min-width: 350px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project .info .project-container .project-content {
+    min-height: 100px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    margin-bottom: calc(4 * var(--index));
+}
+.project-content .media { 
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-content .frame-media.quadrat {
+    width: calc(21 * var(--index));
+    height: calc(21 * var(--index));
+    margin: 0;
+}
+
+.project-content .media .text-content {
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    padding: calc(2 * var(--index));
+    padding-left: calc(6 * var(--index));
+    position: absolute;
+    right: 0;
+    width: 60%;
+    height: calc(19 * var(--index));
+    background-color: var(--box-background-light);
+    border-radius: 20px;
+    box-shadow: var(--box-shadow-dark);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    min-width: 300px;
+    transform: translateX(-300px) scale(.9, .9);
+    transition-property: transform, opacity;
+    transition: all 1s ease .8s;
+}
+
+.project-content .media .text-content.show {
+    opacity: 1;
+    transform: translateX(0) scale(1, 1);
+}
+
+.project-content .media .text-content p {
+    margin-bottom: 10px;
+    line-height: 190%;
+    text-align: justify;
+    font-size: calc(.8 * var(--index));
+}
